@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Risk Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/pages.css" />
+</head>
+<body>
+  <main class="page-shell">
+    <nav class="top-nav" aria-label="Main navigation">
+      <div class="brand">Disease Outbreak Predictor</div>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/solutions" class="active">Solutions</a>
+      </div>
+    </nav>
+
+    <section class="hero-card">
+      <h1>Risk Solution Center</h1>
+      <p>Select a predicted risk level to view practical prevention and intervention steps.</p>
+    </section>
+
+    <section class="panel">
+      <div class="solution-controls">
+        <select id="riskSelect" aria-label="Select risk level">
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+        </select>
+        <button id="showSolutionsBtn" type="button">Show Solutions</button>
+      </div>
+
+      <div class="solution-summary" id="riskSummary"></div>
+
+      <div class="advisory-grid">
+        <article class="insight-card time-card" id="timeCard">
+          <h3>Time-Based Recommendation</h3>
+          <p id="timeRecommendation"></p>
+        </article>
+
+        <article class="insight-card health-card" id="healthCard">
+          <h3>Health Symptoms</h3>
+          <ul id="healthAdvisoryList"></ul>
+        </article>
+
+        <article class="insight-card alert-card" id="alertCard">
+          <h3>Alert Simulation</h3>
+          <p id="alertSimulation"></p>
+        </article>
+      </div>
+
+      <div id="solutionCards" class="solution-cards"></div>
+    </section>
+  </main>
+
+  <script src="/assets/solutions.js"></script>
+</body>
+</html>

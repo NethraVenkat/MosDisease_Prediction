@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Analytics Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/pages.css" />
+</head>
+<body>
+  <main class="page-shell">
+    <nav class="top-nav" aria-label="Main navigation">
+      <div class="brand">Disease Outbreak Predictor</div>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/dashboard" class="active">Dashboard</a>
+        <a href="/solutions">Solutions</a>
+      </div>
+    </nav>
+
+    <section class="hero-card">
+      <h1>Analytics Dashboard</h1>
+      <p>Track risk distribution, monitor trend shifts, and inspect recent prediction records from the API.</p>
+    </section>
+
+    <section class="cards-grid" id="statsCards">
+      <article class="stat-card">
+        <div class="label">Total predictions</div>
+        <div class="value" id="totalCount">0</div>
+      </article>
+      <article class="stat-card">
+        <div class="label">Low risk</div>
+        <div class="value low" id="lowCount">0</div>
+      </article>
+      <article class="stat-card">
+        <div class="label">Medium risk</div>
+        <div class="value medium" id="mediumCount">0</div>
+      </article>
+      <article class="stat-card">
+        <div class="label">High risk</div>
+        <div class="value high" id="highCount">0</div>
+      </article>
+    </section>
+
+    <section class="section-grid">
+      <article class="panel">
+        <h2>Risk Distribution</h2>
+        <div class="canvas-wrap">
+          <canvas id="riskPieChart" aria-label="Risk distribution pie chart"></canvas>
+        </div>
+      </article>
+      <article class="panel">
+        <h2>Risk Counts</h2>
+        <div class="canvas-wrap">
+          <canvas id="riskBarChart" aria-label="Risk bar chart"></canvas>
+        </div>
+      </article>
+    </section>
+
+    <section class="panel">
+      <h2>Recent Predictions</h2>
+      <div id="recentGrid" class="recent-grid">
+        <p class="empty-note">Loading recent predictions...</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script src="/assets/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Disease Outbreak Hotspot Predictor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body>
+  <div class="bg-orb bg-orb-a"></div>
+  <div class="bg-orb bg-orb-b"></div>
+
+  <main class="shell">
+    <nav class="top-nav" aria-label="Main navigation">
+      <div class="brand">Disease Outbreak Predictor</div>
+      <div class="nav-links">
+        <a href="/" class="active">Home</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/solutions" id="solutionsNavLink">Solutions</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div>
+        <p class="eyebrow"></p>
+        <h1>Disease Outbreak Hotspot Predictor</h1>
+        <p class="lede">
+          Enter environmental measurements, predict dengue outbreak risk, then run a what-if simulation to see how rainfall, humidity, or temperature changes affect the outcome.
+        </p>
+      </div>
+      <div class="hero-card">
+        <div class="stat">
+          <span class="stat-label">API</span>
+          <strong id="apiStatus">Checking...</strong>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Model schema</span>
+          <strong id="schemaStatus">Loading...</strong>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Latest record</span>
+          <strong id="latestRecord">None yet</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="panel form-panel">
+        <div class="panel-head">
+          <div>
+            <p class="panel-kicker">Inputs</p>
+            <h2>Build prediction payload</h2>
+          </div>
+          <button class="ghost" id="loadHistoryBtn" type="button">Refresh history</button>
+        </div>
+
+        <div id="schemaNotice" class="notice">Loading model fields from the API...</div>
+        <form id="featureForm" class="feature-form"></form>
+
+        <div class="action-row">
+          <button class="primary" id="predictBtn" type="button">Predict risk</button>
+          <button class="secondary" id="simulateBtn" type="button">Run simulation</button>
+        </div>
+
+        <div class="simulation-box">
+          <h3>Simulation controls</h3>
+          <div class="mini-grid">
+            <label>
+              <span>Rainfall delta %</span>
+              <input id="rainfallDelta" type="number" step="0.1" value="20" />
+            </label>
+            <label>
+              <span>Humidity delta %</span>
+              <input id="humidityDelta" type="number" step="0.1" value="10" />
+            </label>
+            <label>
+              <span>Temperature delta</span>
+              <input id="temperatureDelta" type="number" step="0.1" value="0" />
+            </label>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel result-panel">
+        <div class="panel-head">
+          <div>
+            <p class="panel-kicker">Result</p>
+            <h2>Model response</h2>
+          </div>
+        </div>
+        <div id="riskAlert" class="risk-alert hidden" role="status" aria-live="polite"></div>
+        <div id="resultEmpty" class="empty-state">
+          Your prediction will appear here.
+        </div>
+        <div id="resultCard" class="result-card hidden"></div>
+      </article>
+    </section>
+
+    <section class="panel history-panel">
+      <div class="panel-head">
+        <div>
+          <p class="panel-kicker">Recent activity</p>
+          <h2>History</h2>
+        </div>
+      </div>
+      <div id="historyList" class="history-list">
+        <div class="history-empty">No records loaded yet.</div>
+      </div>
+    </section>
+
+    <section class="panel analytics-panel">
+      <div class="panel-head">
+        <div>
+          <p class="panel-kicker">Analytics</p>
+          <h2>Risk rate graphs</h2>
+        </div>
+      </div>
+      <div class="charts-grid">
+        <article class="chart-card">
+          <h3>Risk distribution</h3>
+          <canvas id="riskDistributionChart" aria-label="Risk distribution chart"></canvas>
+        </article>
+        <article class="chart-card">
+          <h3>Risk trend over records</h3>
+          <canvas id="riskTrendChart" aria-label="Risk trend chart"></canvas>
+        </article>
+      </div>
+      <p id="chartNotice" class="chart-notice hidden">No chart data available yet.</p>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script src="/assets/app.js"></script>
+</body>
+</html>
